@@ -1,13 +1,11 @@
 from __future__ import annotations
 
-import json
-import os
+import subprocess
 from pathlib import Path
-from typing import List
 
 import pytest
 
-from changeloglint import Issue, ChangelogReport, lint_changelog, main
+from changeloglint import lint_changelog, main
 
 
 def _write(path: Path, text: str) -> str:
@@ -24,8 +22,7 @@ def test_missing_unreleased_heading() -> None:
 
 def test_valid_changelog_is_clean() -> None:
     path = _write(
-        Path("/tmp/changeloglint-case2.md"),
-        "## [Unreleased]\n- change\n\n## [1.0.0]\n- fix\n",
+        Path("/tmp/changeloglint-case2.md"), "## [Unreleased]\n- change\n\n## [1.0.0]\n- fix\n"
     )
     report = lint_changelog(path)
     assert report.issues == []
@@ -58,8 +55,7 @@ def test_duplicate_version_heading() -> None:
 
 def test_main_returns_zero_for_clean_file() -> None:
     path = _write(
-        Path("/tmp/changeloglint-clean.md"),
-        "## [Unreleased]\n- change\n\n## [1.0.0]\n- fix\n",
+        Path("/tmp/changeloglint-clean.md"), "## [Unreleased]\n- change\n\n## [1.0.0]\n- fix\n"
     )
     assert main([path]) == 0
 

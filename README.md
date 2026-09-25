@@ -53,9 +53,15 @@ for issue in report.issues:
     print(issue)
 ```
 
+## Contributing
+
+Issues and pull requests are welcome on the
+[github.com/eitanben-ami/changeloglint](https://github.com/eitanben-ami/changeloglint)
+repository.
+
 ## Project Structure
 
-```
+```text
 changeloglint/
   changeloglint.py   # parser, link checker, reporter, CLI
   pyproject.toml

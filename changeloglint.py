@@ -2,12 +2,10 @@ from __future__ import annotations
 
 import argparse
 import json
-import os
 import re
-import sys
 from dataclasses import dataclass, field
 from pathlib import Path
-from typing import Iterable, List, Optional
+from typing import List, Optional
 
 
 UNRELEASED_HEADING_RE = re.compile(r"^##\s*\[Unreleased\]\s*$", re.IGNORECASE)
@@ -45,7 +43,7 @@ def _validate_version_heading(text: str) -> Optional[str]:
 
 def lint_changelog(path: str) -> ChangelogReport:
     report = ChangelogReport()
-    if not os.path.isfile(path):
+    if not Path(path).is_file():
         report.add(path, 0, "missing changelog file", "missing")
         return report
 
