@@ -62,13 +62,16 @@ repository.
 ## Project Structure
 
 ```text
-changeloglint/
-  changeloglint.py   # parser, link checker, reporter, CLI
-  pyproject.toml
-  README.md
-  LICENSE
-  tests/
-    test_changeloglint.py
+.github/
+  workflows/
+    ci.yml
+.gitignore
+LICENSE
+README.md
+changeloglint.py
+pyproject.toml
+tests/
+  test_changeloglint.py
 ```
 
 ## Tags / Keywords
